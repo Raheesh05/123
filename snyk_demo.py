@@ -1,9 +1,10 @@
-# snyk_demo.py
-# A tiny Python script with intentionally outdated dependencies
-# Just run "pip install -r snyk_demo.py" won't work, but Snyk will scan this file.
+from flask import Flask
 
-print("Hello, Snyk!")
+app = Flask(__name__)
 
-# Requirements (intentionally vulnerable versions):
-# Flask==0.12.2
-# requests==2.19.1
+@app.get("/")
+def index():
+    return "Hello, Snyk!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
